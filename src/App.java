@@ -18,7 +18,24 @@ public class App {
 
         IndiceInvertido i = new IndiceInvertido();
         i.CriaIndiceInvertido();
-        i.search("quem");
+        imprimeResultados(i.search("quem"));;
         
+    }
+    public static void imprimeResultados(DynamicArrayList<RetornoModel> resultados){
+        StringBuilder sb = new StringBuilder();
+        sb.append(resultados.get(0).palavra);
+        sb.append(" "); 
+        for(int i = 0;i<resultados.size();i++){
+            RetornoModel termo = resultados.get(i);
+            if(termo.frequencia > 0){
+                sb.append(termo.frequencia);
+                sb.append(" "); 
+                sb.append(termo.documento);
+                sb.append("    "); 
+
+            }
+            
+        }
+        System.out.println(sb);
     }
 }
